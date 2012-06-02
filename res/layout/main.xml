@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="To use the Brightness Switch, use the Switch Activity (for example, add it to your dock).\n"
+        android:textSize="8pt" />
+    <Button
+        android:id="@+id/savebutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/instruction"
+        android:layout_alignParentLeft="true"
+        android:text="Save settings"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/steptext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savebutton"
+        android:layout_alignParentLeft="true"
+        android:text="Number of steps:"
+        android:textSize="8pt" />
+    <EditText
+        android:id="@+id/step"
+        android:inputType="number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/savebutton"
+        android:layout_toRightOf="@id/steptext"
+        android:layout_alignTop="@id/steptext"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/lowesttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/step"
+        android:layout_alignParentLeft="true"
+        android:text="Lowest value (1-255):"
+        android:textSize="8pt" />
+    <EditText
+        android:id="@+id/lowest"
+        android:inputType="number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/step"
+        android:layout_toRightOf="@id/lowesttext"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/highesttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lowest"
+        android:layout_alignParentLeft="true"
+        android:text="Highest value (1-255):"
+        android:textSize="8pt" />
+    <EditText
+        android:id="@+id/highest"
+        android:inputType="number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lowest"
+        android:layout_toRightOf="@id/highesttext"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/editbox_background"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/currentvalues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/highest"
+        android:layout_alignParentLeft="true"
+        android:text="\nCurrent values"
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/currentstep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentvalues"
+        android:layout_alignParentLeft="true"
+        android:text="Steps: "
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/stepsaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentvalues"
+        android:layout_toRightOf="@id/currentstep"
+        android:layout_alignTop="@id/currentstep"
+        android:text=""
+        android:textSize="8pt"
+        android:editable="true" />
+    <TextView
+        android:id="@+id/currentlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentstep"
+        android:layout_alignParentLeft="true"
+        android:text="Lowest: "
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/lowsaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/currentlow"
+        android:layout_alignTop="@id/currentlow"
+        android:text=""
+        android:textSize="8pt"
+        android:editable="true" />
+    <TextView
+        android:id="@+id/currenthigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentlow"
+        android:layout_alignParentLeft="true"
+        android:text="Highest: "
+        android:textSize="8pt" />
+    <TextView
+        android:id="@+id/highsaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/currenthigh"
+        android:layout_alignTop="@id/currenthigh"
+        android:text=""
+        android:textSize="8pt"
+        android:editable="true" />
+</RelativeLayout>
