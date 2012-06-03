@@ -1,145 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <!--Instructions-->
-    <TextView
-        android:id="@+id/instruction"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" 
+    android:layout_width="fill_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="To use the Brightness Switch, use the Switch Activity (for example, add it to your dock).\n"
-        android:textSize="8pt" />
-    <!--Save button-->
-    <Button
-        android:id="@+id/savebutton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/instruction"
-        android:layout_alignParentLeft="true"
-        android:text="Save settings"
-        android:textSize="8pt" />
-    <!--Number of steps-->
-    <TextView
-        android:id="@+id/steptext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/savebutton"
-        android:layout_alignParentLeft="true"
-        android:text="Number of steps:"
-        android:textSize="8pt" />
-    <EditText
-        android:id="@+id/step"
-        android:inputType="number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/savebutton"
-        android:layout_toRightOf="@id/steptext"
-        android:layout_alignTop="@id/steptext"
-        android:layout_alignParentRight="true"
-        android:background="@android:drawable/editbox_background"
-        android:textSize="8pt" />
-    <!--Lowest brightness value-->
-    <TextView
-        android:id="@+id/lowesttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/step"
-        android:layout_alignParentLeft="true"
-        android:text="Lowest value (1-255):"
-        android:textSize="8pt" />
-    <EditText
-        android:id="@+id/lowest"
-        android:inputType="number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/step"
-        android:layout_toRightOf="@id/lowesttext"
-        android:layout_alignParentRight="true"
-        android:background="@android:drawable/editbox_background"
-        android:textSize="8pt" />
-    <!--Highest brightness value-->
-    <TextView
-        android:id="@+id/highesttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lowest"
-        android:layout_alignParentLeft="true"
-        android:text="Highest value (1-255):"
-        android:textSize="8pt" />
-    <EditText
-        android:id="@+id/highest"
-        android:inputType="number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lowest"
-        android:layout_toRightOf="@id/highesttext"
-        android:layout_alignParentRight="true"
-        android:background="@android:drawable/editbox_background"
-        android:textSize="8pt" />
-    <!--Current values-->
-    <TextView
-        android:id="@+id/currentvalues"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/highest"
-        android:layout_alignParentLeft="true"
-        android:text="\nCurrent values"
-        android:textSize="8pt" />
-    <!--Steps-->
-    <TextView
-        android:id="@+id/currentstep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/currentvalues"
-        android:layout_alignParentLeft="true"
-        android:text="Steps: "
-        android:textSize="8pt" />
-    <TextView
-        android:id="@+id/stepsaved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/currentvalues"
-        android:layout_toRightOf="@id/currentstep"
-        android:layout_alignTop="@id/currentstep"
-        android:text=""
-        android:textSize="8pt"
-        android:editable="true" />
-    <!--Lowest brightness-->
-    <TextView
-        android:id="@+id/currentlow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/currentstep"
-        android:layout_alignParentLeft="true"
-        android:text="Lowest: "
-        android:textSize="8pt" />
-    <TextView
-        android:id="@+id/lowsaved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/currentlow"
-        android:layout_alignTop="@id/currentlow"
-        android:text=""
-        android:textSize="8pt"
-        android:editable="true" />
-    <!--Highest brightness-->
-    <TextView
-        android:id="@+id/currenthigh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/currentlow"
-        android:layout_alignParentLeft="true"
-        android:text="Highest: "
-        android:textSize="8pt" />
-    <TextView
-        android:id="@+id/highsaved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/currenthigh"
-        android:layout_alignTop="@id/currenthigh"
-        android:text=""
-        android:textSize="8pt"
-        android:editable="true" />
-</RelativeLayout>
+        android:layout_height="fill_parent"
+        >
+        <!--Instructions-->
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="To use the Brightness Switch, use the Switch Activity (for example, add it to your dock).\n"
+            android:textSize="8pt" />
+        <!--Save button-->
+        <Button
+            android:id="@+id/savebutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instruction"
+            android:layout_alignParentLeft="true"
+            android:text="Save settings"
+            android:textSize="8pt" />
+        <!--Number of steps-->
+        <TextView
+            android:id="@+id/steptext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/savebutton"
+            android:layout_alignParentLeft="true"
+            android:text="Number of steps:"
+            android:textSize="8pt" />
+        <EditText
+            android:id="@+id/step"
+            android:inputType="number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/savebutton"
+            android:layout_toRightOf="@id/steptext"
+            android:layout_alignTop="@id/steptext"
+            android:layout_alignParentRight="true"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="8pt" />
+        <!--Lowest brightness value-->
+        <TextView
+            android:id="@+id/lowesttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/step"
+            android:layout_alignParentLeft="true"
+            android:text="Lowest value (1-255):"
+            android:textSize="8pt" />
+        <EditText
+            android:id="@+id/lowest"
+            android:inputType="number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/step"
+            android:layout_toRightOf="@id/lowesttext"
+            android:layout_alignParentRight="true"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="8pt" />
+        <!--Highest brightness value-->
+        <TextView
+            android:id="@+id/highesttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lowest"
+            android:layout_alignParentLeft="true"
+            android:text="Highest value (1-255):"
+            android:textSize="8pt" />
+        <EditText
+            android:id="@+id/highest"
+            android:inputType="number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lowest"
+            android:layout_toRightOf="@id/highesttext"
+            android:layout_alignParentRight="true"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="8pt" />
+        <!--Exponent for assumed function for visible brightness-->
+        <TextView
+            android:id="@+id/exptext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/highest"
+            android:layout_alignParentLeft="true"
+            android:text="Exponent:"
+            android:textSize="8pt" />
+        <EditText
+            android:id="@+id/exp"
+            android:inputType="numberDecimal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/highest"
+            android:layout_toRightOf="@id/exptext"
+            android:layout_alignParentRight="true"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="8pt" />
+        <TextView
+            android:id="@+id/expexplain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exp"
+            android:layout_alignParentLeft="true"
+            android:text="This is the exponent for the assumed function for visible brightness, because visible brightness is not exactly a linear function of the numeric value. Set 1 for linear scale."
+            android:textSize="6pt" />
+        <!--Current values-->
+        <TextView
+            android:id="@+id/currentvalues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expexplain"
+            android:layout_alignParentLeft="true"
+            android:text="\nCurrent values"
+            android:textSize="8pt" />
+        <!--Steps-->
+        <TextView
+            android:id="@+id/currentstep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentvalues"
+            android:layout_alignParentLeft="true"
+            android:text="Steps: "
+            android:textSize="8pt" />
+        <TextView
+            android:id="@+id/stepsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentvalues"
+            android:layout_toRightOf="@id/currentstep"
+            android:layout_alignTop="@id/currentstep"
+            android:text=""
+            android:textSize="8pt"
+            android:editable="true" />
+        <!--Lowest brightness-->
+        <TextView
+            android:id="@+id/currentlow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentstep"
+            android:layout_alignParentLeft="true"
+            android:text="Lowest: "
+            android:textSize="8pt" />
+        <TextView
+            android:id="@+id/lowsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/currentlow"
+            android:layout_alignTop="@id/currentlow"
+            android:text=""
+            android:textSize="8pt"
+            android:editable="true" />
+        <!--Highest brightness-->
+        <TextView
+            android:id="@+id/currenthigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentlow"
+            android:layout_alignParentLeft="true"
+            android:text="Highest: "
+            android:textSize="8pt" />
+        <TextView
+            android:id="@+id/highsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/currenthigh"
+            android:layout_alignTop="@id/currenthigh"
+            android:text=""
+            android:textSize="8pt"
+            android:editable="true" />
+        <!--Exponent-->
+        <TextView
+            android:id="@+id/currentexp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currenthigh"
+            android:layout_alignParentLeft="true"
+            android:text="Exponent: "
+            android:textSize="8pt" />
+        <TextView
+            android:id="@+id/expsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/currentexp"
+            android:layout_alignTop="@id/currentexp"
+            android:text=""
+            android:textSize="8pt"
+            android:editable="true" />
+    </RelativeLayout>
+</ScrollView>

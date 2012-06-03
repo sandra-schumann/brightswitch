@@ -34,7 +34,7 @@ public class Switch extends Activity
         stepSaved -= 1;
         int lowest = preferences.getInt("lowest", 1);
         int highest = preferences.getInt("highest", 255);
-        int range = highest-lowest;
+        float exp = preferences.getInt("exp", 80)/100.0f;
         
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         
@@ -46,29 +46,13 @@ public class Switch extends Activity
             currentBrightness = 0.0f;
         }
         
-        // Finds step size and what it currently (approximately) is
-        float stepSize = ((float) range)/stepSaved;
-        int currentstep;
-        if (currentBrightness < lowest) {
-            currentstep = 0;
-        }
-        else {
-            currentstep = Math.round((currentBrightness-lowest)/stepSize);
-        }
+        // Finds brightness value to be set
+        int nextBrightness = nextExponential(currentBrightness, stepSaved, lowest, highest, exp);
         
-        if (currentstep >= stepSaved) {
-            // Switches brightness to lowest value
-            Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE, 0);
-            Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS, lowest);
-            lp.screenBrightness = lowest/255.0f;
-        }
-        else {
-            // Switched brightness one step up
-            Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE, 0);
-            int nextBrightness = (int) ((currentstep+1)*stepSize) + lowest;
-            Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS, nextBrightness);
-            lp.screenBrightness = nextBrightness/255.0f;
-        }
+        // Sets brightness value
+        Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE, 0);
+        Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS, nextBrightness);
+        lp.screenBrightness = nextBrightness/255.0f;
         
         getWindow().setAttributes(lp);
         
@@ -81,5 +65,30 @@ public class Switch extends Activity
             public void run() {
                 finish();
             }}, 200);
-    };
+    }
+    
+    // Finds next brightness, assuming brightness is a power-law function
+    public int nextExponential(float currentBrightness, int stepSaved, int lowest, int highest, float exponent) {
+        float range = (float) (Math.pow(highest, exponent) - Math.pow(lowest, exponent));
+        
+        // Finds step size and what it currently (approximately) is
+        float stepSize = range/stepSaved;
+        int currentstep;
+        if (currentBrightness < lowest) {
+            currentstep = 0;
+        }
+        else {
+            currentstep = (int) Math.round((Math.pow(currentBrightness,exponent)-Math.pow(lowest,exponent))/stepSize);
+        }
+        
+        if (currentstep >= stepSaved) {
+            // Returns lowest value
+            return lowest;
+        }
+        else {
+            // Returns brightness value for one step up
+            int nextBrightness = (int) Math.pow(((currentstep+1)*stepSize), 1.0f/exponent) + lowest;
+            return nextBrightness;
+        }
+    }
 }

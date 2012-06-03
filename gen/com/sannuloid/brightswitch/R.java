@@ -11,20 +11,25 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
-        public static final int currenthigh=0x7f05000d;
-        public static final int currentlow=0x7f05000b;
-        public static final int currentstep=0x7f050009;
-        public static final int currentvalues=0x7f050008;
+        public static final int currentexp=0x7f050012;
+        public static final int currenthigh=0x7f050010;
+        public static final int currentlow=0x7f05000e;
+        public static final int currentstep=0x7f05000c;
+        public static final int currentvalues=0x7f05000b;
+        public static final int exp=0x7f050009;
+        public static final int expexplain=0x7f05000a;
+        public static final int expsaved=0x7f050013;
+        public static final int exptext=0x7f050008;
         public static final int highest=0x7f050007;
         public static final int highesttext=0x7f050006;
-        public static final int highsaved=0x7f05000e;
+        public static final int highsaved=0x7f050011;
         public static final int instruction=0x7f050000;
         public static final int lowest=0x7f050005;
         public static final int lowesttext=0x7f050004;
-        public static final int lowsaved=0x7f05000c;
+        public static final int lowsaved=0x7f05000f;
         public static final int savebutton=0x7f050001;
         public static final int step=0x7f050003;
-        public static final int stepsaved=0x7f05000a;
+        public static final int stepsaved=0x7f05000d;
         public static final int steptext=0x7f050002;
     }
     public static final class layout {

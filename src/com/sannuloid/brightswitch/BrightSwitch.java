@@ -24,6 +24,7 @@ public class BrightSwitch extends Activity
     TextView stepSavedView;
     TextView lowSavedView;
     TextView highSavedView;
+    TextView expSavedView;
     
     /** Called when the activity is first created. */
     @Override
@@ -36,6 +37,7 @@ public class BrightSwitch extends Activity
         stepSavedView = (TextView)findViewById(R.id.stepsaved);
         lowSavedView = (TextView)findViewById(R.id.lowsaved);
         highSavedView = (TextView)findViewById(R.id.highsaved);
+        expSavedView = (TextView)findViewById(R.id.expsaved);
         
         // Preferences from file "BrightnessPreferences"
         PREF_FILE_NAME = "BrightnessPreferences";
@@ -46,11 +48,13 @@ public class BrightSwitch extends Activity
         int stepSaved = preferences.getInt("stepnum", 2);
         int lowSaved = preferences.getInt("lowest", 1);
         int highSaved = preferences.getInt("highest", 255);
+        int expSaved = preferences.getInt("exp", 80);
         
         // Displays current preferences
         stepSavedView.setText(Integer.toString(stepSaved));
         lowSavedView.setText(Integer.toString(lowSaved));
         highSavedView.setText(Integer.toString(highSaved));
+        expSavedView.setText(Float.toString(expSaved/100.0f));
         
         // Listens on saveButton
         Button saveButton = (Button) findViewById (R.id.savebutton);
@@ -64,6 +68,7 @@ public class BrightSwitch extends Activity
                 EditText stepInput = (EditText)findViewById(R.id.step);
                 EditText lowInput = (EditText)findViewById(R.id.lowest);
                 EditText highInput = (EditText)findViewById(R.id.highest);
+                EditText expInput = (EditText)findViewById(R.id.exp);
                 
                 // For each parameter
                 //   if there is no value in EditText, then use the one stored
@@ -78,7 +83,7 @@ public class BrightSwitch extends Activity
                 
                 Integer lowest;
                 if (lowInput.getText().length() == 0) {
-                    lowest = preferences.getInt("lowest", 2);
+                    lowest = preferences.getInt("lowest", 1);
                 }
                 else {
                     lowest = Integer.parseInt(lowInput.getText().toString());
@@ -86,10 +91,18 @@ public class BrightSwitch extends Activity
                 
                 Integer highest;
                 if (highInput.getText().length() == 0) {
-                    highest = preferences.getInt("highest", 2);
+                    highest = preferences.getInt("highest", 255);
                 }
                 else {
                     highest = Integer.parseInt(highInput.getText().toString());
+                }
+                
+                Integer exp;
+                if (expInput.getText().length() == 0) {
+                    exp = preferences.getInt("exp", 80);
+                }
+                else {
+                    exp = (int) ((Float.valueOf(expInput.getText().toString()).floatValue()) * 100);
                 }
                 
                 // Checks for invalid parameter values
@@ -120,12 +133,13 @@ public class BrightSwitch extends Activity
                 }
                 
                 // Saves preferences to file "BrightnessPreferences"
-                savePreferences(stepNum, lowest, highest);
+                savePreferences(stepNum, lowest, highest, exp);
                 
                 // Sets TextViews to show current values
                 stepSavedView.setText(Integer.toString(stepNum));
                 lowSavedView.setText(Integer.toString(lowest));
                 highSavedView.setText(Integer.toString(highest));
+                expSavedView.setText(Float.toString(exp/100.0f));
             }
             catch (Exception ex) {
                 // Displays error message
@@ -139,11 +153,12 @@ public class BrightSwitch extends Activity
         }
     };
     
-    public void savePreferences(int steps, int lowest, int highest) {
+    public void savePreferences(int steps, int lowest, int highest, int exp) {
         // Saves preferences to file "BrightnessPreferences"
         editor.putInt("stepnum", steps);
         editor.putInt("lowest", lowest);
         editor.putInt("highest", highest);
+        editor.putInt("exp", exp);
         editor.commit();
     }
 }
