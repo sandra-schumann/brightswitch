@@ -25,9 +25,11 @@ public class Switch extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.switcher);
         
+        // Preferences from file "BrightnessPreferences"
         String PREF_FILE_NAME = "BrightnessPreferences";
         SharedPreferences preferences = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
         
+        // Gets preferences
         int stepSaved = preferences.getInt("stepnum", 2);
         stepSaved -= 1;
         int lowest = preferences.getInt("lowest", 1);
@@ -36,6 +38,7 @@ public class Switch extends Activity
         
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         
+        // Gets current brightness
         float currentBrightness;
         try {
             currentBrightness = Settings.System.getInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS);
@@ -43,6 +46,7 @@ public class Switch extends Activity
             currentBrightness = 0.0f;
         }
         
+        // Finds step size and what it currently (approximately) is
         float stepSize = ((float) range)/stepSaved;
         int currentstep;
         if (currentBrightness < lowest) {
@@ -53,11 +57,13 @@ public class Switch extends Activity
         }
         
         if (currentstep >= stepSaved) {
+            // Switches brightness to lowest value
             Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE, 0);
             Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS, lowest);
             lp.screenBrightness = lowest/255.0f;
         }
         else {
+            // Switched brightness one step up
             Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE, 0);
             int nextBrightness = (int) ((currentstep+1)*stepSize) + lowest;
             Settings.System.putInt(this.getContentResolver(),Settings.System.SCREEN_BRIGHTNESS, nextBrightness);
@@ -66,8 +72,10 @@ public class Switch extends Activity
         
         getWindow().setAttributes(lp);
         
+        // For refreshing screen
         startActivity(new Intent(this,Dummy.class));
         
+        // Exits after a while
         Handler myHandler = new Handler();
         myHandler.postDelayed(new Runnable(){
             public void run() {

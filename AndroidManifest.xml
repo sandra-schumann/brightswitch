@@ -15,14 +15,14 @@
         <activity android:name="com.sannuloid.brightswitch.Switch"
                   android:taskAffinity="com.sannuloid.brightswitch.Switch"
                   android:excludeFromRecents="true"
-                  android:theme="@style/EmptyActivity" >
+                  android:theme="@style/EmptyActivity" ><!--Not visible-->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" /><!--Shows up as an activity-->
             </intent-filter>
         </activity>
         <activity android:name="com.sannuloid.brightswitch.Dummy"
                   android:taskAffinity="com.sannuloid.brightswitch.Dummy"
                   android:excludeFromRecents="true"
-                  android:theme="@style/EmptyActivity" />
+                  android:theme="@style/EmptyActivity" /><!--Not visible-->
     </application>
 </manifest> 

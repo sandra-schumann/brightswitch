@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.view.WindowManager;
 import android.provider.Settings;
 
+// Dummy Activity - the only thing it does is finishing
+
 public class Dummy extends Activity{
 
     @Override
