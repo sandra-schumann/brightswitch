@@ -27,6 +27,7 @@ public final class R {
         public static final int lowest=0x7f050005;
         public static final int lowesttext=0x7f050004;
         public static final int lowsaved=0x7f05000f;
+        public static final int resetbutton=0x7f050014;
         public static final int savebutton=0x7f050001;
         public static final int step=0x7f050003;
         public static final int stepsaved=0x7f05000d;

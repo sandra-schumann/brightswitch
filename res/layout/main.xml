@@ -190,5 +190,14 @@
             android:text=""
             android:textSize="8pt"
             android:editable="true" />
+        <!--Reset button-->
+        <Button
+            android:id="@+id/resetbutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/currentexp"
+            android:layout_alignParentLeft="true"
+            android:text="Reset values"
+            android:textSize="8pt" />
     </RelativeLayout>
 </ScrollView>

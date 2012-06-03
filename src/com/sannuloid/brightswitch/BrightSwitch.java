@@ -59,6 +59,10 @@ public class BrightSwitch extends Activity
         // Listens on saveButton
         Button saveButton = (Button) findViewById (R.id.savebutton);
         saveButton.setOnClickListener (btnListener);
+        
+        // Listens on resetButton
+        Button resetButton = (Button) findViewById (R.id.resetbutton);
+        resetButton.setOnClickListener (resetListener);
     }
     
     private OnClickListener btnListener = new OnClickListener() {
@@ -145,6 +149,30 @@ public class BrightSwitch extends Activity
                 // Displays error message
                 Context context = getApplicationContext();
                 CharSequence text = "Not a valid operation.";
+                int duration = Toast.LENGTH_LONG;
+                
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }
+    };
+    
+    private OnClickListener resetListener = new OnClickListener() {
+        public void onClick(View v) {
+            try {
+                // Resets to original values
+                // (Chosen completely subjectively)
+                savePreferences(2, 1, 255, 80);
+                
+                stepSavedView.setText("2");
+                lowSavedView.setText("1");
+                highSavedView.setText("255");
+                expSavedView.setText("0.8");
+            }
+            catch (Exception ex) {
+                // Displays error message
+                Context context = getApplicationContext();
+                CharSequence text = "Reset button does not work, inform someone or fix the problem.";
                 int duration = Toast.LENGTH_LONG;
                 
                 Toast toast = Toast.makeText(context, text, duration);

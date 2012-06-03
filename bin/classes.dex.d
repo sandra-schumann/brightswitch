@@ -7,6 +7,7 @@
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/BuildConfig.class \
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/R$id.class \
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/R$style.class \
+/home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/BrightSwitch$2.class \
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/Switch.class \
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/Dummy$1.class \
 /home/sandra/Android/BrightSwitch/BrightSwitch/bin/classes/com/sannuloid/brightswitch/R.class \

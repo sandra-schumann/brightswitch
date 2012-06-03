@@ -64,7 +64,7 @@ public class Switch extends Activity
         myHandler.postDelayed(new Runnable(){
             public void run() {
                 finish();
-            }}, 200);
+            }}, 100);
     }
     
     // Finds next brightness, assuming brightness is a power-law function
